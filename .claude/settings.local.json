@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m autorec.etl.synthetic_generator)",
+      "Bash(pip install *)",
+      "Bash(python -m autorec.etl.quality_checks)",
+      "Bash(python -c ' *)",
+      "Bash(python -c \"import ast, sys; files=['autorec/db/connection.py']; [ast.parse\\(open\\(f\\).read\\(\\)\\) or print\\(f,'OK'\\) for f in files]\")",
+      "Bash(python -c \"from autorec.db import connection; print\\('import OK'\\)\")",
+      "Bash(python -m autorec.etl.load)",
+      "Bash(python -m autorec.features.user_features)",
+      "Bash(python -m autorec.features.item_features)",
+      "Bash(python -m autorec.models.popularity)",
+      "Bash(python -m autorec.models.content_based)",
+      "Bash(python -m autorec.models.matrix_factorization)",
+      "Bash(python -m autorec.eval.evaluator)",
+      "Bash(python -m uvicorn autorec.api.main:app --host 0.0.0.0 --port 8000)",
+      "Bash(curl -s http://localhost:8000/health)",
+      "Bash(curl -s http://localhost:8000/cars/C00001)",
+      "Bash(curl -s http://localhost:8000/users/U00001/profile)",
+      "Bash(curl -s -X POST http://localhost:8000/recommend -H 'Content-Type: application/json' -d '{\"user_id\":\"U00001\",\"model\":\"als\",\"k\":3}')",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(r\\) for r in d]\")",
+      "Bash(python -c \"import sys,json; print\\(json.dumps\\(json.load\\(sys.stdin\\), indent=2, ensure_ascii=False\\)\\)\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(f'  {k}: {v}'\\) for k,v in d.items\\(\\)]\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'latency={d[\\\\\"latency_ms\\\\\"]}ms'\\); [print\\(f'  {r[\\\\\"car_id\\\\\"]}  score={r[\\\\\"score\\\\\"]:.4f}  {r[\\\\\"explanation\\\\\"]}'\\) for r in d['recommendations']]\")",
+      "Bash(curl -s -X POST http://localhost:8000/recommend -H 'Content-Type: application/json' -d '{\"user_id\":\"U00001\",\"model\":\"content_based\",\"k\":3,\"filters\":{\"body_type\":\"SUV\",\"price_max\":40000}}')",
+      "Bash(curl -s http://localhost:8000/metrics)",
+      "Bash(python -c \"import sys,json; [print\\(r\\) for r in json.load\\(sys.stdin\\)]\")",
+      "Bash(kill %1)",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('ui/dashboard.py'\\).read\\(\\)\\); print\\('syntax OK'\\)\")",
+      "Bash(python -m streamlit run ui/dashboard.py --server.headless true --server.port 8501)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8501/)",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('D:/MCS_26S1课程资料/个人项目/AutoRec/scripts/run_all.py', encoding='utf-8'\\).read\\(\\)\\); print\\('run_all.py syntax OK'\\)\")",
+      "Bash(python scripts/run_all.py --help)",
+      "Bash(python scripts/run_all.py)",
+      "Bash(python -c \"import autorec; print\\('import OK'\\)\")",
+      "Bash(python -c \"from autorec.models.matrix_factorization import ALSRecommender; print\\('ALSRecommender import OK'\\)\")"
+    ]
+  }
+}

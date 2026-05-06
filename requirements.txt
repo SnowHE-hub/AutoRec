@@ -1,0 +1,15 @@
+pandas
+numpy
+sqlalchemy
+psycopg2-binary
+scikit-learn
+lightgbm
+implicit
+fastapi
+uvicorn
+streamlit
+faker
+matplotlib
+seaborn
+plotly
+python-dotenv
